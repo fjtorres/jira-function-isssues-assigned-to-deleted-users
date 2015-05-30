@@ -1,0 +1,30 @@
+<!-- https://developer.atlassian.com/docs/getting-started/plugin-modules/component-plugin-module -->
+<atlassian-plugin key="${project.groupId}.${project.artifactId}"
+	name="${project.name}" plugins-version="2">
+
+	<plugin-info>
+		<description>${project.description}</description>
+		<version>${project.version}</version>
+		<vendor name="${project.organization.name}" url="${project.organization.url}" />
+	</plugin-info>
+
+	<resource type="i18n" name="issues-assigned-to-deleted-users" location="i18n.issues-assigned-to-deleted-users" />
+
+	<!-- import from the product container -->
+<!-- 	<component-import key="applicationProperties" -->
+<!-- 		interface="com.atlassian.sal.api.ApplicationProperties" /> -->
+<!-- 	<component-import key="atlassianI18nResolver" -->
+<!-- 		interface="com.atlassian.sal.api.message.I18nResolver" /> -->
+
+	<!-- Project components -->
+
+	<jql-function name="Issues assigned to deleted users" i18n-name-key="issues-assigned-to-deleted-users.name"
+		key="issues-assigned-to-deleted-users"
+		class="es.fjtorres.jira.function.issuesAssignedToDeletedUsers.IssuesAssignedToDeletedUsers">
+		<description key="issues-assigned-to-deleted-users.description">JQL function that allows search issues
+			where the user assigned has been deleted.</description>
+		<fname>assignedToDeletedUsers</fname>
+		<list>true</list>
+	</jql-function>
+
+</atlassian-plugin>
